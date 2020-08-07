@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faAngleDoubleLeft, faSmileWink, faDizzy, faSave } from '@fortawesome/free-solid-svg-icons';
 import {HeroeModel} from "../../../models/heroe.model";
 import {NgForm} from "@angular/forms";
+import {HeroesService} from "../../services/heroes.service";
 
 @Component({
   selector: 'app-heroe',
@@ -14,9 +15,9 @@ export class HeroeComponent implements OnInit {
   faDizzy = faDizzy;
   faSave = faSave;
 
-  heroe :HeroeModel = new HeroeModel();
+  heroe: HeroeModel = new HeroeModel();
 
-  constructor() { }
+  constructor( private heroeService: HeroesService) { }
 
   ngOnInit(): void {
   }
@@ -25,9 +26,11 @@ export class HeroeComponent implements OnInit {
     if (form.invalid){
       console.log('Formulario No Valido');
       return;
-    } else {
-      console.log(form);
-      console.log(this.heroe);
     }
+    this.heroeService.crearHeroe(this.heroe)
+      .subscribe( (respuesta: HeroeModel) => {
+        console.log(respuesta);
+      } );
+
   }
 }

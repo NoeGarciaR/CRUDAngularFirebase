@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlusCircle, faSpinner, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import {HeroesService} from "../../services/heroes.service";
+import {HeroeModel} from "../../../models/heroe.model";
 
 @Component({
   selector: 'app-heroes',
@@ -10,9 +12,15 @@ export class HeroesComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faSpinner = faSpinner;
   faExclamationTriangle = faExclamationTriangle;
-  constructor() { }
+
+  heroes : HeroeModel[] = [];
+
+  constructor( private heroeService: HeroesService ) { }
 
   ngOnInit(): void {
+    this.heroeService.getHeroes().subscribe( (resp: any) => {
+      this.heroes = resp;
+    } );
   }
 
 }

@@ -18,7 +18,9 @@
       <div class="card-body">
 
 
-      <form>
+      <form (ngSubmit)="guardar(form)"
+            #form = "ngForm"
+      >
         <div class="form-group">
           <label>Firebase ID</label>
           <input
@@ -26,6 +28,9 @@
             type="text"
             disabled="disabled"
             placeholder="Firebase ID"
+            [(ngModel)]="heroe.id"
+            name="id"
+            required
           >
           <small class="form-text text-muted">Este Campo es Autogenerado</small>
         </div>
@@ -34,9 +39,10 @@
           <input
             class="form-control"
             type="text"
-            disabled="disabled"
             placeholder="Nombre Héroe"
             required
+            [(ngModel)]="heroe.nombre"
+            name="nombre"
           >
         </div>
 
@@ -45,19 +51,26 @@
           <input
             class="form-control"
             type="text"
-            disabled="disabled"
             placeholder="Poder del Héroe"
+            [(ngModel)]="heroe.poder"
+            name="poder"
           >
         </div>
 
         <div class="form-group">
           <label>Estado</label>
-          <div>
-            <button class="btn btn-outline-success w-50" type="button">
+          <div class="text-center">
+            <button
+              *ngIf="heroe.vivo"
+              (click)="heroe.vivo = false"
+              class="btn btn-outline-success w-75" type="button">
               <fa-icon [icon]="faSmileWink"></fa-icon>
               Vivo
             </button>
-            <button class="btn btn-outline-danger w-50" type="button">
+            <button
+              *ngIf="!heroe.vivo"
+              (click)="heroe.vivo = true"
+              class="btn btn-outline-danger w-75" type="button">
               <fa-icon [icon]="faDizzy"></fa-icon>
               Muerto
             </button>
@@ -68,6 +81,7 @@
         <div class="form-group text-center">
           <button type="submit" class="btn btn-primary w-25">
             <fa-icon [icon]="faSave"></fa-icon>
+            Guardar
           </button>
         </div>
 

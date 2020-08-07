@@ -1,4 +1,4 @@
-<h1>Listado de Héroes</h1>
+<h1 class="animate__animated animate__slideInUp">Listado de Héroes</h1>
 <hr>
 
 <div class="row">
@@ -10,7 +10,9 @@
   </div>
 </div>
 <!--TABLA-->
-<table class="table mt-3 animate__animated animate__slideInUp">
+<table
+  *ngIf="!cargando && heroes.length > 0"
+  class="table mt-3 animate__animated animate__slideInUp">
   <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>
@@ -46,7 +48,9 @@
   </tbody>
 </table>
 <!--Cargando Elementos-->
-<div class="alert alert-info text-center mt-3">
+<div
+  *ngIf="cargando"
+  class="alert alert-info text-center mt-3 animate__animated animate__fadeIn" >
   <h4 class="alert-heading">Cargando...</h4>
   <p class="fa-spin fa-2x">
     <fa-icon [icon]="faSpinner"></fa-icon>
@@ -56,7 +60,9 @@
   </p>
 </div>
 <!--No se encuentran registor-->
-<div class="alert alert-danger text-center mt-3">
+<div
+  *ngIf="!cargando && heroes.length === 0"
+  class="alert alert-danger text-center mt-3">
   <h4 class="alert-heading">No hay registros</h4>
   <p class="fa-2x animate__animated animate__zoomIn">
     <fa-icon [icon]="faExclamationTriangle"></fa-icon>

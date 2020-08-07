@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlusCircle, faSpinner, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faSpinner, faExclamationTriangle, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import {HeroesService} from "../../services/heroes.service";
 import {HeroeModel} from "../../../models/heroe.model";
 
@@ -12,6 +12,8 @@ export class HeroesComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faSpinner = faSpinner;
   faExclamationTriangle = faExclamationTriangle;
+  faPen = faPen;
+  faTrash = faTrash;
 
   heroes : HeroeModel[] = [];
 

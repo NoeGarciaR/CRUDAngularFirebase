@@ -14,7 +14,7 @@ export class HeroeComponent implements OnInit {
   faDizzy = faDizzy;
   faSave = faSave;
 
-  heroe :HeroeModel = new HeroeModel();it
+  heroe :HeroeModel = new HeroeModel();
 
   constructor() { }
 
